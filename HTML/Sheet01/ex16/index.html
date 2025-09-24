@@ -7,6 +7,56 @@
   </head>
   <body>
     <h1>Formulario Ejercicio 16</h1>
-    <form></form>
+    <form>
+      <div>
+        <label for="name">¿Cuál es tu nombre?</label>
+        <br />
+        <input type="text" id="name" maxlength="30" />
+      </div>
+      <br />
+      <div>
+        <label for="surname">¿Y tus apellidos?</label>
+        <br />
+        <input type="text" id="surname" maxlength="30" />
+      </div>
+      <br />
+      <div>
+        <label for="correo">¿Cuál es tu email?</label>
+        <br />
+        <input type="email" id="correo" required />
+      </div>
+      <br />
+      <div>
+        <label for="select1">Asunto</label>
+        <br />
+        <select id="select1" size="3">
+          <option value="presupuesto">Pedir presupuesto</option>
+          <option value="cita">Solicitar cita previa</option>
+          <option value="other">Otros</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label for="select2">¿Cómo nos has conocido?</label>
+        <br />
+        <select id="select2" multiple>
+          <option value="friend">Un amigo</option>
+          <option value="google">Googleando</option>
+          <option value="mail">Buzoneo</option>
+          <option value="other">Otros</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label for="message">¡Mándanos un mensaje!</label>
+        <br />
+        <textarea id="message" maxlength="300"></textarea>
+      </div>
+      <br />
+
+      <div>
+        <input type="submit" value="Ahí va eso, caraqueso" />
+      </div>
+    </form>
   </body>
 </html>
