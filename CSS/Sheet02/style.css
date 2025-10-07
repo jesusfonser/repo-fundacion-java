@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5rem;
 }
 
 html, body{
@@ -36,7 +37,7 @@ nav{
 #greybox{
     background-color: rgb(177, 174, 174);
     margin: 0;
-    height: 40vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +50,7 @@ nav{
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 30%;
+    width: 40%;
 }
  #greybox p{
     text-align: center;
@@ -60,6 +61,8 @@ nav{
     background-color: black;
     border-radius: 5px;
     padding: 1rem;
+    border-style: none;
+    width: 30%;
  }
 
 #not-greybox{
