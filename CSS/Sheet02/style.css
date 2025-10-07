@@ -1,0 +1,127 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body{
+    margin: 0;
+    height: 120vh;
+}
+
+header, .ul-nav{
+    display: flex;
+    align-items: center;
+}
+
+header{
+    justify-content: space-between;
+    padding: 0.1rem 1rem;
+}
+
+nav{
+    width: 25%;
+}
+
+
+
+.ul-nav{
+    justify-content: space-around;
+    padding: 0;
+}
+
+#signup{
+    padding: 1rem 1.5rem;
+}
+
+#greybox{
+    background-color: rgb(177, 174, 174);
+    margin: 0;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#greybox > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+}
+ #greybox p{
+    text-align: center;
+ }
+
+ #greybox button{
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding: 1rem;
+ }
+
+#not-greybox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#not-div1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+ #not-greybox > div + div{
+    display: flex;
+    width: 80%;
+    gap: 2rem;
+    justify-content: center;
+    height: 59vh;
+    
+ }
+
+h4{
+    margin: 1rem 0;
+}
+
+.blcksq{
+    background-color: black;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+
+#ffinal{
+    margin-top: 0.5rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0px 1rem;
+    align-items: center;
+    height: 20vh;
+    background-color: rgb(177, 174, 174);
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 22vw;
+    
+}
+
+footer > ul{
+    padding: 0;
+}
+
+footer > div{
+    display: flex;
+    flex-direction: row;
+}
+
+article a{
+    font-size: 0.8rem;
+}
