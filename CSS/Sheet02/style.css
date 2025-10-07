@@ -95,14 +95,19 @@ h4{
 }
 
 #ffinal{
-    margin-top: 0.5rem;
+    margin-top: 2.5rem;
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: 0px 1rem;
+    padding: 0px 2.5rem;
     align-items: center;
-    height: 20vh;
+    height: 30vh;
     background-color: rgb(177, 174, 174);
+    font-size: 0.8rem;
+}
+
+#ffinal li{
+    padding: 0.7rem;
 }
 
 article{
@@ -113,15 +118,27 @@ article{
     
 }
 
+
+
 footer > ul{
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
+
 
 footer > div{
     display: flex;
     flex-direction: row;
+    gap: 2rem;
 }
 
 article a{
     font-size: 0.8rem;
+}
+
+#footer-marca, #footer-enlace{
+    padding: 0;
+    margin: 0;
 }
