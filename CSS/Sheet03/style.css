@@ -1,0 +1,24 @@
+body{
+    background-color: yellow;
+    position: relative;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.ear{
+    background-color: black;
+    width: 150px;
+    aspect-ratio: 1 / 1;
+    position: fixed;
+}
+
+.ear--right{
+    transform: translate(50%, -50%) rotate(45deg);
+    right: 0;
+    
+}
+
+.ear--left{
+    left: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
