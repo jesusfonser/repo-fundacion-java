@@ -15,3 +15,9 @@ function sumatorio(base=0, ...nums){
 }
 
 console.log(sumatorio(10, 1, 2, '3', 4)); // 17
+
+function maximoDe(lista){
+    return Math.max(...lista)
+}
+
+console.log(maximoDe([1,9,3]));
