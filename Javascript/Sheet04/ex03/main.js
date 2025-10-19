@@ -70,10 +70,13 @@ button.addEventListener("click", e => {
 
 contenedor.addEventListener("click", e => {
     const chosen_button = e.target;
-    const chosen_li = e.target.parentNode
 
     if (chosen_button.classList.contains("complete-button")) {
-        
+        const chosen_task = chosen_button.parentNode;
+        chosen_task.classList.add("hecha");
+    } else if (chosen_button.classList.contains("delete-button")){
+        chosen_button.parentNode.remove();
+        updateCounter();
     }
 })
 
