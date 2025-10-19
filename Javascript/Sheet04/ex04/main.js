@@ -23,6 +23,14 @@ function createTask(texto) {
     ul.appendChild(li);
 }
 
+const eventEmptyTask = new CustomEvent("addEmptyTask", {
+    detail: {message: "El campo no puede estar vacío"}
+})
+
+document.addEventListener("addEmptyTask", e => {
+    console.log(e.detail.message);
+})
+
 const contenedor = document.getElementById("tareas");
 
 const h2 = document.createElement("h2");
@@ -60,6 +68,7 @@ button.addEventListener("click", e => {
     e.preventDefault();
     if (input.value === '') {
         span_err.innerHTML = "<br>No has puesto ná loco";
+        document.dispatchEvent(eventEmptyTask);
     } else {
         span_err.innerText = '';
         input.setCustomValidity('');
