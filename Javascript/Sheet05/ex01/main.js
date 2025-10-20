@@ -1,6 +1,10 @@
 console.log("Inicio");
 setTimeout(() => console.log("setTimeout ejecutado"), 0);
-Promise.resolve().then(() => console.log("Promesa resuelta"));
+Promise.resolve().then(() => {
+    console.log("Primera promesa resuelta");
+    Promise.resolve().then(() => console.log("Segunda promesa resuelta"))    
+});
+
 console.log("Fin");
 
 /*
