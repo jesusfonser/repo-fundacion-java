@@ -150,15 +150,24 @@ const searcher = async (query, apiInfo) => {
 
 }
 
+
+
+
 const initiationApp = (async () => {
-    
+    let debounceTimeout;
     const allInfo = await getInfo();
     await fillPage(1, 20);
     searchbar.addEventListener("input", async (e) => {
-        dex_div.innerHTML = '';
-        await searcher(e.target.value, allInfo)
+        clearTimeout(debounceTimeout)
+
+        debounceTimeout = setTimeout(async () => {
+            dex_div.innerHTML = '';
+            await searcher(e.target.value, allInfo)
+        }, 1500)
+
     })
 })()
+
 
 /*
 pokeAdder(1).then(res => {
