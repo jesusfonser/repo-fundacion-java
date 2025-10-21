@@ -1,9 +1,43 @@
-const arrayPokes = [];
+let arrayPokes = [];
 
-const pokeAdder = (id, name, types, evo=false) => {
-    return {id, name, types, evo}
+const pokeAdder = async (id) => {
+    const infoPokeAPI = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+    const infoPoke = await infoPokeAPI.json();
+
+    const namePoke = infoPoke.species.name;
+    let typePoke = undefined;
+    
+
+    switch (infoPoke.types.length) {
+        case 1:
+            typePoke = infoPoke.types[0].type.name;
+            break;
+        case 2:
+            typePoke = [infoPoke.types[0].type.name, infoPoke.types[1].type.name]
+            break;
+    }
+
+
+    /*
+   [ { slot: 1,
+       type: { name: 'grass', url: 'https://pokeapi.co/api/v2/type/12/' } },
+     { slot: 2,
+       type: { name: 'poison', url: 'https://pokeapi.co/api/v2/type/4/' } } ],
+    */
+
+    const evoPokeAPI = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${namePoke}/`);
+    const evoPokeAPIjson = await evoPokeAPI.json();
+    const evoPoke1 = evoPokeAPIjson.evolves_from_species;
+    
+    let evoPoke = undefined;
+
+    evoPoke1 ? evoPoke = evoPoke1.name : evoPoke = false;
+    
+    return {id, namePoke, typePoke, evoPoke}
 }
 
+
+/*
 arrayPokes.push(pokeAdder(1, "Bulbasaur", ["grass", "poison"]));
 arrayPokes.push(pokeAdder(2, "Ivysaur", ["grass", "poison"], "Bulbasaur"));
 arrayPokes.push(pokeAdder(3, "Venusaur", ["grass", "poison"], "Ivysaur"));
@@ -13,6 +47,7 @@ arrayPokes.push(pokeAdder(6, "Charizard", ["fire", "flying"], "Charmeleon"));
 arrayPokes.push(pokeAdder(7, "Squirtle", "water"));
 arrayPokes.push(pokeAdder(8, "Wartortle", "water", "Squirtle"));
 arrayPokes.push(pokeAdder(9, "Blastoise", "water", "Wartortle"));
+*/
 
 const cardGenerator = (poke) => {
     const parentDiv = document.getElementsByClassName("pokedex__grid")[0];
@@ -39,12 +74,16 @@ const cardGenerator = (poke) => {
     div_gridCard.appendChild(div_cardDesc);
 
     const h2_name = document.createElement("h2");
-    h2_name.innerText = poke.name;
+    const nameOfPoke = poke.namePoke;
+    const firstLetterName = nameOfPoke.charAt(0).toUpperCase();
+    const truePokeName = firstLetterName + nameOfPoke.slice(1);
+
+    h2_name.innerText = truePokeName;
     div_cardDesc.appendChild(h2_name);
 
     //logica para uno o dos botones con los tipos
-    if (Array.isArray(poke.types)) {
-        const [type1, type2] = poke.types;
+    if (Array.isArray(poke.typePoke)) {
+        const [type1, type2] = poke.typePoke;
 
         const button_type1 = document.createElement("button");
         button_type1.innerText = type1.toUpperCase();
@@ -54,7 +93,7 @@ const cardGenerator = (poke) => {
         button_type2.innerText = type2.toUpperCase();
         div_cardDesc.appendChild(button_type2);
     } else {
-        const type = poke.types;
+        const type = poke.typePoke;
 
         const button_type = document.createElement("button");
         button_type.innerText = type.toUpperCase();
@@ -62,7 +101,7 @@ const cardGenerator = (poke) => {
     }
 
     const div_evo = document.createElement("div");
-    !poke.evo ? div_evo.setAttribute("class", "desc__evo desc__evo--inv") : div_evo.setAttribute("class", "desc__evo");
+    !poke.evoPoke ? div_evo.setAttribute("class", "desc__evo desc__evo--inv") : div_evo.setAttribute("class", "desc__evo");
     div_cardDesc.appendChild(div_evo);
 
     const p_evo = document.createElement("p");
@@ -70,9 +109,31 @@ const cardGenerator = (poke) => {
     div_evo.appendChild(p_evo);
 
     const h3_evo = document.createElement("h3");
-    h3_evo.innerText = !poke.evo ? "Lorem Ipsum" : poke.evo;
+    h3_evo.innerText = !poke.evoPoke ? "Lorem Ipsum" : poke.evoPoke;
     div_evo.appendChild(h3_evo);
 }
 
 
+async function fillPage(start, end) {
+    for (let i = start; i <= end; i++){
+        const cardData = await pokeAdder(i);
+        cardGenerator(cardData);
+    }
+}
+
+fillPage(1, 21)
+/*
+pokeAdder(1).then(res => {
+    arrayPokes.push(res)
+} );
+/*
+for (let i = 1; i <= 9; i++){
+    pokeAdder(i).then(poke => {
+        arrayPokes.push(poke)
+    } )
+}
+
+
 arrayPokes.forEach((ele) => cardGenerator(ele))
+
+*/
