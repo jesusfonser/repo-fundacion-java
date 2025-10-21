@@ -1,4 +1,13 @@
-let arrayPokes = [];
+const searchbar = document.querySelector("input");
+const dex_div = document.querySelector(".pokedex__grid")
+
+async function getInfo() {
+    const allPokeAPI = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
+    const allPoke = await allPokeAPI.json();
+
+    return allPoke
+}
+
 
 const pokeAdder = async (id) => {
     const infoPokeAPI = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -121,7 +130,36 @@ async function fillPage(start, end) {
     }
 }
 
-fillPage(1, 21)
+
+const searcher = async (query, apiInfo) => {
+    const arrayPokesSearch = []
+    
+    apiInfo.results.forEach(ele => {
+        if (ele.name.includes(query.toLowerCase())) {
+            arrayPokesSearch.push(ele);
+        }
+    })
+
+    for (ele of arrayPokesSearch) {
+        const arrayURL = ele.url.split("/");
+        const idFromPoke = arrayURL[6];
+
+        const objPokeSearch = await pokeAdder(idFromPoke);
+        cardGenerator(objPokeSearch);
+    }
+
+}
+
+const initiationApp = (async () => {
+    
+    const allInfo = await getInfo();
+    await fillPage(1, 20);
+    searchbar.addEventListener("input", async (e) => {
+        dex_div.innerHTML = '';
+        await searcher(e.target.value, allInfo)
+    })
+})()
+
 /*
 pokeAdder(1).then(res => {
     arrayPokes.push(res)
