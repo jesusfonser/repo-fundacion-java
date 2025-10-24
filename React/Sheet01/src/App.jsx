@@ -4,10 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Composicion } from "./ex02/Composicion.jsx"
 import { Usuario } from "./ex03/Usuario.jsx"
+import { Login } from "./ex04/PanelLoguin.jsx"
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const boolean = true;
   return (
     <>
       <div>
@@ -19,7 +20,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Usuario nombre="Juancisco"></Usuario>
+      <Login logueado={ boolean }></Login>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
