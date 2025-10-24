@@ -9,6 +9,12 @@ import { Login } from "./ex04/PanelLoguin.jsx"
 function App() {
   const [count, setCount] = useState(0)
   const boolean = true;
+  const usuarios = [
+    { id: 1, nombre: "María" },
+    { id: 2, nombre: "Juan" },
+    { id: 3, nombre: "Laura" }
+  ];
+  
   return (
     <>
       <div>
@@ -20,8 +26,11 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Login logueado={ boolean }></Login>
-      <div className="card">
+      <ul>
+      {usuarios.map((elem) => <li key={ elem.id }>{ elem.nombre }</li>) }
+      </ul>
+        <div className="card">
+        
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
