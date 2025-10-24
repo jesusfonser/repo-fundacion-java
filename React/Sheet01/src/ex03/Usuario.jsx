@@ -1,0 +1,3 @@
+const Usuario = ({ nombre, edad }) => {
+    
+}
