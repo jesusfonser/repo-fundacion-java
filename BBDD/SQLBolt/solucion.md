@@ -141,3 +141,49 @@ SELECT * FROM movies WHERE Director != "John Lasseter";
 ```
 SELECT * FROM movies WHERE Title LIKE "WALL-%";
 ```
+
+## Ejercicio 4
+
+### Tabla
+
+| id | title               | director        | year | length_minutes |
+|----|---------------------|-----------------|------|----------------|
+| 1  | Toy Story 2         | John Lasseter   | 1999 | 93             |
+| 2  | WALL-E              | Andrew Stanton  | 2008 | 104            |
+| 3  | Monsters University | Dan Scanlon     | 2013 | 110            |
+| 4  | Toy Story           | John Lasseter   | 1995 | 81             |
+| 5  | Brave               | Brenda Chapman  | 2012 | 102            |
+| 6  | Ratatouille         | Brad Bird       | 2007 | 115            |
+| 7  | A Bug's Life        | John Lasseter   | 1998 | 95             |
+| 8  | Up                  | Pete Docter     | 2009 | 101            |
+| 9  | Toy Story 3         | Lee Unkrich     | 2010 | 103            |
+| 10 | Cars                | John Lasseter   | 2006 | 117            |
+| 11 | Monsters, Inc.      | Pete Docter     | 2001 | 92             |
+| 12 | Cars 2              | John Lasseter   | 2011 | 120            |
+| 13 | The Incredibles     | Brad Bird       | 2004 | 116            |
+| 14 | Finding Nemo        | Andrew Stanton  | 2003 | 107            |
+
+#### List all directors of Pixar movies (alphabetically), without duplicates
+
+```
+SELECT DISTINCT Director FROM movies ORDER BY Director;
+```
+
+#### List the last four Pixar movies released (ordered from most recent to least)
+
+```
+SELECT * FROM MOVIES ORDER BY Year DESC LIMIT 4;
+```
+
+#### List the first five Pixar movies sorted alphabetically
+
+```
+SELECT * FROM MOVIES ORDER BY Title ASC LIMIT 5;
+```
+
+#### List the next five Pixar movies sorted alphabetically
+
+```
+SELECT * FROM MOVIES ORDER BY Title ASC LIMIT 5 OFFSET 5;
+```
+
