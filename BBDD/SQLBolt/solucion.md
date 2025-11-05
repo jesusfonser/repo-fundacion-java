@@ -298,11 +298,92 @@ SELECT Title, Domestic_sales, International_sales FROM movies
 INNER JOIN boxoffice ON id = Movie_id WHERE International_sales > Domestic_sales;
 ```
 
-#### List all the movies by their ratings in descending order ✓
+#### List all the movies by their ratings in descending order
 
 ```
 SELECT Title, Rating FROM movies
 INNER JOIN boxoffice ON id = Movie_id ORDER BY Rating DESC;
 ```
 
+## Ejercicio 7
 
+### Tablas
+
+| building_name | capacity |
+|---------------|---------|
+| 1e            | 24      |
+| 1w            | 32      |
+| 2e            | 16      |
+| 2w            | 20      |
+
+| role     | name        | building | years_employed |
+|----------|------------|----------|----------------|
+| Engineer | Becky A.   | 1e       | 4              |
+| Engineer | Dan B.     | 1e       | 2              |
+| Engineer | Sharon F.  | 1e       | 6              |
+| Engineer | Dan M.     | 1e       | 4              |
+| Engineer | Malcom S.  | 1e       | 1              |
+| Artist   | Tylar S.   | 2w       | 2              |
+| Artist   | Sherman D. | 2w       | 8              |
+| Artist   | Jakob J.   | 2w       | 6              |
+| Artist   | Lillia A.  | 2w       | 7              |
+| Artist   | Brandon J. | 2w       | 7              |
+| Manager  | Scott K.   | 1e       | 9              |
+| Manager  | Shirlee M. | 1e       | 3              |
+| Manager  | Daria O.   | 2w       | 6              |
+
+#### Find the list of all buildings that have employees 
+
+```
+SELECT DISTINCT Building FROM employees;
+```
+
+#### Find the list of all buildings and their capacity 
+
+```
+SELECT * FROM Buildings;
+```
+
+#### List all buildings and the distinct employee roles in each building (including empty buildings) 
+
+```
+SELECT DISTINCT Building_name, Role FROM Buildings
+LEFT JOIN Employees ON Building_name = Building ;
+```
+
+## Ejercicio 8
+
+### Tablas 
+
+| building_name | capacity |
+|---------------|---------|
+| 1e            | 24      |
+| 1w            | 32      |
+| 2e            | 16      |
+| 2w            | 20      |
+
+
+| role     | name        | building | years_employed |
+|----------|------------|----------|----------------|
+| Engineer | Becky A.   | 1e       | 4              |
+| Engineer | Dan B.     | 1e       | 2              |
+| Engineer | Sharon F.  | 1e       | 6              |
+| Engineer | Dan M.     | 1e       | 4              |
+| Engineer | Malcom S.  | 1e       | 1              |
+| Artist   | Tylar S.   | 2w       | 2              |
+| Artist   | Sherman D. | 2w       | 8              |
+| Artist   | Jakob J.   | 2w       | 6              |
+| Artist   | Lillia A.  | 2w       | 7              |
+
+
+#### Find the name and role of all employees who have not been assigned to a building
+
+```
+SELECT Name, Role FROM employees WHERE Building IS NULL;
+```
+
+#### Find the names of the buildings that hold no employees
+
+```
+SELECT building_name FROM buildings LEFT JOIN employees ON Building_name = Building WHERE name IS NULL;
+```
